@@ -1,0 +1,129 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+
+body{
+    height:100vh;
+    background:#E7E3D4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+
+/* Logo */
+
+.logo{
+    background:#355E3B;
+    color:white;
+    padding:15px 50px;
+    border-radius:30px;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+
+/* Login box */
+
+.login-container{
+    width:320px;
+    background:#2F5233;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+}
+
+
+/* Icon */
+
+.avatar{
+    width:80px;
+    height:80px;
+    background:#8BAE75;
+    border-radius:50%;
+    margin:0 auto 20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:35px;
+}
+
+
+h2{
+    color:white;
+    margin-bottom:20px;
+}
+
+
+/* Inputs */
+
+input{
+
+    width:100%;
+    padding:12px;
+
+    margin-bottom:15px;
+
+    border:none;
+
+    border-radius:20px;
+
+    background:#87A96B;
+
+    color:white;
+}
+
+
+input::placeholder{
+    color:white;
+}
+
+
+/* Links */
+
+a{
+
+    color:#EAF2E1;
+
+    text-decoration:none;
+
+    display:block;
+
+    margin:10px;
+
+    font-size:14px;
+
+}
+
+
+/* Button */
+
+button{
+
+    width:90%;
+
+    padding:12px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:20px;
+
+    background:#A7C957;
+
+    color:#234027;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
