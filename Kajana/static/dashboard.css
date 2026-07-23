@@ -1,0 +1,168 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+
+body{
+
+    background:#E7E3D4;
+
+}
+
+
+
+/* Header */
+
+header{
+
+    height:80px;
+
+    background:#355E3B;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:20px 35px;
+
+    color:white;
+
+}
+
+
+
+.logo{
+
+    font-size:25px;
+
+    font-weight:bold;
+
+}
+
+
+.logo span{
+
+    display:block;
+
+    font-size:12px;
+
+}
+
+
+
+/* Navigation buttons */
+
+nav button{
+
+    background:#B7D3A8;
+
+    border:none;
+
+    padding:12px 25px;
+
+    margin-left:10px;
+
+    border-radius:25px;
+
+    color:#355E3B;
+
+    font-weight:bold;
+
+}
+
+
+
+/* Dashboard */
+
+.dashboard{
+
+    display:flex;
+
+    gap:20px;
+
+    padding:25px;
+
+}
+
+
+
+/* Left image */
+
+.hero{
+
+    width:55%;
+
+    height:400px;
+
+    background:#DCD7C4;
+
+    border:2px solid #B5A98F;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:8px;
+
+}
+
+
+.tree{
+
+    font-size:170px;
+
+}
+
+
+
+/* Right panel */
+
+.services{
+
+    width:40%;
+
+    height:400px;
+
+    background:#355E3B;
+
+    border-radius:10px;
+
+    padding:30px;
+
+}
+
+
+.services h2{
+
+    color:white;
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.service{
+
+    background:#E7E3D4;
+
+    color:#355E3B;
+
+    padding:14px;
+
+    border-radius:25px;
+
+    margin:18px 0;
+
+    font-weight:bold;
+
+}
