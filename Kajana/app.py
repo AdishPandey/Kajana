@@ -55,7 +55,11 @@ def enquiry():
 @app.route("/booking-status")
 def booking_status():
     return render_template("booking_status.html")
-    
+
+@app.route("/logout")
+def logout():
+    return render_template("Login.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+body {
+    background: #E7E3D4;
+    color: #355E3B;
+}
+
+
+/* Header */
+
+header {
+    height: 80px;
+    background: #355E3B;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 35px;
+    color: white;
+}
+
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.logo span {
+    display: block;
+    font-size: 12px;
+}
+
+
+.back_button {
+    background: #B7D3A8;
+    color: #355E3B;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+
+.back_button:hover {
+    background: #D5E5C9;
+}
+
+
+/* Main */
+
+main {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 30px;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+
+.subtitle {
+    text-align: center;
+    color: #637566;
+    margin-bottom: 40px;
+    font-size: 17px;
+}
+
+
+/* Service cards */
+
+.services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+
+.service_card {
+    background: #355E3B;
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    min-height: 190px;
+    transition: 0.2s;
+}
+
+
+.service_card:hover {
+    transform: translateY(-5px);
+    background: #426F48;
+}
+
+
+.service_card h2 {
+    margin-bottom: 15px;
+}
+
+
+.service_card p {
+    color: #E7E3D4;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+
+.service_card span {
+    color: #B7D3A8;
+    font-weight: bold;
+}
+
+
+/* Smaller screens */
+
+@media (max-width: 700px) {
+
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+}
+
