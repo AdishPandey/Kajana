@@ -16,7 +16,7 @@ def login():
 
         # Hard-coded login details
         correct_username = "admin"
-        correct_password = "Password123!"
+        correct_password = "admin123"
 
 
         if username == correct_username and password == correct_password:
@@ -37,8 +37,28 @@ def dashboard():
 
     return render_template("dashboard.html")
 
+@app.route("/book-services")
+def book_services():
+    return render_template("book_services.html")
 
+
+@app.route("/suggested-quote")
+def suggested_quote():
+    return render_template("suggested_quote.html")
+
+
+@app.route("/enquiry")
+def enquiry():
+    return render_template("enquiry.html")
+
+
+@app.route("/booking-status")
+def booking_status():
+    return render_template("booking_status.html")
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
     
