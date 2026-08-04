@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Service - Kajana</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='booking_form.css') }}">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        Kajana
+        <span>EST 2026.</span>
+    </div>
+
+
+    <a href="/book_services" class="back_button">
+        ← Services
+    </a>
+
+</header>
+
+
+
+<main>
+
+    <h1>Book {{ service }}</h1>
+
+    <p class="subtitle">
+        Enter your booking details below.
+    </p>
+
+
+    <form action="/submit_booking" method="POST">
+
+
+        <!-- keeps the selected service -->
+        <input 
+        type="hidden" 
+        name="service" 
+        value="{{ service }}">
+
+
+
+        <label>Date</label>
+
+        <input 
+        type="date" 
+        name="booking_date"
+        required>
+
+
+
+        <label>Time</label>
+
+        <input 
+        type="time" 
+        name="booking_time"
+        required>
+
+
+
+        <label>Additional Details</label>
+
+        <textarea 
+        name="details"
+        placeholder="Describe your project..."></textarea>
+
+
+
+        <button type="submit">
+            Confirm Booking
+        </button>
+
+
+    </form>
+
+
+</main>
+
+
+</body>
+
+</html>

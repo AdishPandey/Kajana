@@ -10,7 +10,6 @@
 
 <body>
 
-<!-- Top navigation -->
 <header>
 
     <div class="logo">
@@ -19,36 +18,36 @@
     </div>
 
 
-<nav>
+    <nav>
 
-    <a href="/book-services">
-        <button>Book Services</button>
-    </a>
+        <a href="{{ url_for('book_services') }}">
+            <button>Book Services</button>
+        </a>
 
-    <a href="/suggested-quote">
-        <button>Suggested Quote</button>
-    </a>
 
-    <a href="/enquiry">
-        <button>Enquiry</button>
-    </a>
+        <a href="{{ url_for('suggested_quote') }}">
+            <button>Suggested Quote</button>
+        </a>
 
-    <a href="/booking-status">
-        <button>Booking Status</button>
-    </a>
 
-</nav>
+        <a href="{{ url_for('enquiry') }}">
+            <button>Enquiry</button>
+        </a>
 
+
+        <a href="{{ url_for('booking_status') }}">
+            <button>Booking Status</button>
+        </a>
+
+
+    </nav>
 
 </header>
 
 
-<!-- Main dashboard -->
 
 <div class="dashboard">
 
-
-    <!-- Image section -->
 
     <div class="hero">
 
@@ -59,8 +58,6 @@
     </div>
 
 
-
-    <!-- Services -->
 
     <div class="services">
 
@@ -92,7 +89,9 @@
 
 </div>
 
-<a href="/logout" class="logout_button">
+
+
+<a href="{{ url_for('logout') }}" class="logout_button">
     Logout
 </a>
 

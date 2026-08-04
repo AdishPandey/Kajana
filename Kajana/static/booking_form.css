@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #E7E3D4;
+    color: #355E3B;
+}
+
+
+/* Header */
+
+header {
+    height: 80px;
+    background: #355E3B;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 35px;
+    color: white;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    display: block;
+    font-size: 12px;
+}
+
+.back_button {
+    background: #B7D3A8;
+    color: #355E3B;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.back_button:hover {
+    background: #D5E5C9;
+}
+
+
+/* Main */
+
+main {
+    width: 90%;
+    max-width: 650px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #637566;
+    margin-bottom: 35px;
+}
+
+
+/* Form */
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    margin-top: 18px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 13px;
+    border: 2px solid #D5DDCF;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #F8F8F3;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #355E3B;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+
+/* Confirm button */
+
+button {
+    margin-top: 30px;
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    background: #355E3B;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #426F48;
+}
