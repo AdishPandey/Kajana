@@ -136,10 +136,76 @@ def submit_booking():
 
 
 # BOOKING STATUS
+# BOOKING STATUS
 @app.route("/booking_status")
 def booking_status():
 
-    return render_template("booking_status.html")
+    # Connect to the Kajana database
+    connection = sqlite3.connect("Kajana.db")
+
+    # Create a cursor to run SQL commands
+    cursor = connection.cursor()
+
+    # Get every booking from the bookings table
+    cursor.execute("""
+        SELECT booking_id,
+               service,
+               booking_date,
+               booking_time,
+               details,
+               status
+        FROM bookings
+        ORDER BY booking_id DESC
+    """)
+
+    # Store all bookings in a variable
+    bookings = cursor.fetchall()
+
+    # Close the database connection
+    connection.close()
+
+    # Send the bookings to the HTML page
+    return render_template(
+        "booking_status.html",
+        bookings=bookings
+    )
+
+# UPDATE BOOKING STATUS
+@app.route("/update_status/<int:booking_id>", methods=["POST"])
+def update_status(booking_id):
+
+    # Get the new status selected by the admin
+    new_status = request.form.get("status")
+
+
+    # Connect to database
+    connection = sqlite3.connect("Kajana.db")
+
+    cursor = connection.cursor()
+
+
+    # Update the booking status
+    cursor.execute("""
+        UPDATE bookings
+        SET status = ?
+        WHERE booking_id = ?
+    """,
+    (
+        new_status,
+        booking_id
+    ))
+
+
+    # Save changes
+    connection.commit()
+
+    # Close database
+    connection.close()
+
+
+    # Return to booking status page
+    return redirect("/booking_status")
+    
 
 
 
@@ -171,4 +237,3 @@ if __name__ == "__main__":
     create_database()
 
     app.run(debug=True)
-    
