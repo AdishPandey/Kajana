@@ -3,93 +3,244 @@
 
 <head>
 
-    <title>Booking Status</title>
+    <title>Booking Status - Kajana</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='booking_status.css') }}">
 
 </head>
 
+
 <body>
 
-<h1>Booking Status</h1>
 
-<a href="/dashboard">
-    ← Dashboard
-</a>
+<header>
 
-<br><br>
+    <div class="logo">
+        Kajana
+        <span>EST 2026.</span>
+    </div>
 
-{% if bookings %}
 
-<table border="1" cellpadding="10">
+    <a href="/dashboard" class="back_button">
+        ← Dashboard
+    </a>
 
-<tr>
+</header>
 
-    <th>ID</th>
-    <th>Service</th>
-    <th>Date</th>
-    <th>Time</th>
-    <th>Details</th>
-    <th>Status</th>
 
-</tr>
+
+
+<main>
+
+
+<h1>
+    Booking Management
+</h1>
+
+
+<p class="subtitle">
+    Manage customer service requests and appointments.
+</p>
+
+
+
+<!-- SUMMARY CARDS -->
+
+<div class="summary_cards">
+
+
+    <div class="summary_card">
+
+        <h3>
+            Total Bookings
+        </h3>
+
+        <p>
+            {{ total_bookings }}
+        </p>
+
+    </div>
+
+
+
+    <div class="summary_card">
+
+        <h3>
+            Pending
+        </h3>
+
+        <p>
+            {{ pending_bookings }}
+        </p>
+
+    </div>
+
+
+
+    <div class="summary_card">
+
+        <h3>
+            Completed
+        </h3>
+
+        <p>
+            {{ completed_bookings }}
+        </p>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+<h2>
+    Customer Bookings
+</h2>
+
+
+
+<div class="booking_container">
+
+
 
 {% for booking in bookings %}
 
-<tr>
-
-    <td>{{ booking[0] }}</td>
-    <td>{{ booking[1] }}</td>
-    <td>{{ booking[2] }}</td>
-    <td>{{ booking[3] }}</td>
-    <td>{{ booking[4] }}</td>
-    <td>
-
-    <!-- Display current status -->
-    {{ booking[5] }}
-
-    <!-- Admin status update form -->
-    <form action="/update_status/{{ booking[0] }}" method="POST">
-
-        <select name="status">
-
-            <option value="Pending">
-                Pending
-            </option>
-
-            <option value="Confirmed">
-                Confirmed
-            </option>
-
-            <option value="Completed">
-                Completed
-            </option>
-
-            <option value="Cancelled">
-                Cancelled
-            </option>
-
-        </select>
 
 
-        <button type="submit">
-            Update
-        </button>
-
-    </form>
-
-</td>
+<div class="booking_card">
 
 
-</tr>
+
+    <div class="booking_top">
+
+
+        <h3>
+            #BK-{{ booking[0] }}
+        </h3>
+
+
+        <span class="status">
+
+            {{ booking[5] }}
+
+        </span>
+
+
+    </div>
+
+
+
+
+    <h2>
+        {{ booking[1] }}
+    </h2>
+
+
+
+    <p>
+        📅 {{ booking[2] }}
+    </p>
+
+
+    <p>
+        🕒 {{ booking[3] }}
+    </p>
+
+
+    <p>
+        📝 {{ booking[4] }}
+    </p>
+
+
+
+
+    <div class="actions">
+
+
+        <!-- Update status -->
+
+        <form action="/update_status/{{ booking[0] }}" method="POST">
+
+
+           <select name="status">
+
+<option value="Pending"
+{% if booking[5] == "Pending" %}selected{% endif %}>
+Pending
+</option>
+
+
+<option value="Confirmed"
+{% if booking[5] == "Confirmed" %}selected{% endif %}>
+Confirmed
+</option>
+
+
+<option value="Completed"
+{% if booking[5] == "Completed" %}selected{% endif %}>
+Completed
+</option>
+
+
+<option value="Cancelled"
+{% if booking[5] == "Cancelled" %}selected{% endif %}>
+Cancelled
+</option>
+
+</select>
+
+
+
+
+            <button>
+                Update
+            </button>
+
+
+        </form>
+
+
+
+
+        <!-- Delete -->
+
+
+        <form action="/delete_booking/{{ booking[0] }}" method="POST">
+
+
+            <button class="delete_button">
+
+                Delete
+
+            </button>
+
+
+        </form>
+
+
+
+    </div>
+
+
+
+</div>
+
+
 
 {% endfor %}
 
-</table>
 
-{% else %}
 
-<h3>No bookings found.</h3>
+</div>
 
-{% endif %}
+
+
+</main>
+
 
 </body>
 

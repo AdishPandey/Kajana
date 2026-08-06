@@ -1,0 +1,213 @@
+body {
+
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    background: #f2eee3;
+
+    color: #2f4f35;
+
+}
+
+
+
+header {
+
+    background: #356b45;
+
+    padding: 25px 50px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+
+.logo {
+
+    color: white;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+}
+
+
+.logo span {
+
+    display: block;
+
+    font-size: 12px;
+
+}
+
+
+
+.back_button {
+
+    background: #dce7d2;
+
+    padding: 12px 20px;
+
+    border-radius: 20px;
+
+    text-decoration: none;
+
+    color: #356b45;
+
+}
+
+
+
+main {
+
+    padding: 40px 70px;
+
+}
+
+
+
+h1 {
+
+    font-size: 40px;
+
+}
+
+
+
+
+.summary_cards {
+
+    display: flex;
+
+    gap: 25px;
+
+    margin: 30px 0;
+
+}
+
+
+
+.summary_card {
+
+    background: #356b45;
+
+    color: white;
+
+    width: 220px;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+}
+
+
+
+.summary_card p {
+
+    font-size: 35px;
+
+    margin: 10px;
+
+}
+
+
+
+
+.booking_container {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+
+    gap: 25px;
+
+}
+
+
+
+.booking_card {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    border: 2px solid #d5ddca;
+
+}
+
+
+
+.booking_top {
+
+    display:flex;
+
+    justify-content:space-between;
+
+}
+
+
+
+.status {
+
+    background:#dcefd8;
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+}
+
+
+
+.actions {
+
+    margin-top:20px;
+
+}
+
+
+
+select {
+
+    padding:10px;
+
+    border-radius:10px;
+
+}
+
+
+
+button {
+
+    background:#356b45;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+}
+
+
+
+.delete_button {
+
+    background:#b54235;
+
+    margin-top:10px;
+
+}

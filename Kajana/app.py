@@ -135,10 +135,115 @@ def submit_booking():
 
 
 
-# BOOKING STATUS
-# BOOKING STATUS
+
 @app.route("/booking_status")
 def booking_status():
+
+    connection = sqlite3.connect("Kajana.db")
+
+    cursor = connection.cursor()
+
+
+    cursor.execute("""
+        SELECT *
+        FROM bookings
+        ORDER BY booking_id DESC
+    """)
+
+
+    bookings = cursor.fetchall()
+
+
+    connection.close()
+
+
+    total_bookings = len(bookings)
+
+    pending_bookings = 0
+
+    completed_bookings = 0
+
+
+    for booking in bookings:
+
+        if booking[5] == "Pending" or booking[5] == "Confirmed":
+            pending_bookings += 1
+
+
+        if booking[5] == "Completed":
+            completed_bookings += 1
+
+
+
+    latest_booking = "None"
+
+
+    if bookings:
+        latest_booking = bookings[0][2]
+
+
+    return render_template(
+        "booking_status.html",
+        bookings=bookings,
+        total_bookings=total_bookings,
+        pending_bookings=pending_bookings,
+        completed_bookings=completed_bookings,
+        latest_booking=latest_booking
+    )
+    
+
+    # Connect to database
+    connection = sqlite3.connect("Kajana.db")
+
+    cursor = connection.cursor()
+
+
+    # Get all bookings
+    cursor.execute("""
+        SELECT *
+        FROM bookings
+        ORDER BY booking_id DESC
+    """)
+
+
+    bookings = cursor.fetchall()
+
+
+    connection.close()
+
+
+    # Calculate summary information
+
+    total_bookings = len(bookings)
+
+
+    upcoming_bookings = 0
+    completed_bookings = 0
+    next_appointment = "None"
+
+
+    for booking in bookings:
+
+        status = booking[5]
+
+
+        if status == "Pending" or status == "Confirmed":
+            upcoming_bookings += 1
+
+
+        if status == "Completed":
+            completed_bookings += 1
+
+
+    # Send data to HTML
+    return render_template(
+        "booking_status.html",
+        bookings=bookings,
+        total_bookings=total_bookings,
+        upcoming_bookings=upcoming_bookings,
+        completed_bookings=completed_bookings,
+        next_appointment=next_appointment
+    )
 
     # Connect to the Kajana database
     connection = sqlite3.connect("Kajana.db")
@@ -205,7 +310,35 @@ def update_status(booking_id):
 
     # Return to booking status page
     return redirect("/booking_status")
-    
+
+# DELETE BOOKING
+@app.route("/delete_booking/<int:booking_id>", methods=["POST"])
+def delete_booking(booking_id):
+
+    # Connect to database
+    connection = sqlite3.connect("Kajana.db")
+
+    # Create cursor
+    cursor = connection.cursor()
+
+
+    # Delete selected booking
+    cursor.execute("""
+        DELETE FROM bookings
+        WHERE booking_id = ?
+    """,
+    (booking_id,))
+
+
+    # Save changes
+    connection.commit()
+
+    # Close database connection
+    connection.close()
+
+
+    # Return to booking status page
+    return redirect("/booking_status")
 
 
 
@@ -229,6 +362,7 @@ def enquiry():
 def logout():
 
     return render_template("Login.html")
+
 
 
 
