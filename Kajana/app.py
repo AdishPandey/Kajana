@@ -139,6 +139,124 @@ def submit_booking():
 @app.route("/booking_status")
 def booking_status():
 
+    # Connect to database
+    connection = sqlite3.connect("Kajana.db")
+
+    cursor = connection.cursor()
+
+
+    # Get bookings
+    cursor.execute("""
+        SELECT *
+        FROM bookings
+        ORDER BY booking_id DESC
+    """)
+
+
+    bookings = cursor.fetchall()
+
+
+    connection.close()
+
+
+
+    # Summary counters
+
+    total_bookings = len(bookings)
+
+    pending_bookings = 0
+
+    completed_bookings = 0
+
+
+
+    for booking in bookings:
+
+        status = booking[6].strip().lower()
+
+
+        if status == "pending" or status == "confirmed":
+            pending_bookings += 1
+
+
+        if status == "completed":
+            completed_bookings += 1
+
+
+
+    return render_template(
+        "booking_status.html",
+        bookings=bookings,
+        total_bookings=total_bookings,
+        pending_bookings=pending_bookings,
+        completed_bookings=completed_bookings
+    )
+    
+
+    # Connect to database
+    connection = sqlite3.connect("Kajana.db")
+
+    cursor = connection.cursor()
+
+
+    # Get all bookings
+    cursor.execute("""
+        SELECT *
+        FROM bookings
+        ORDER BY booking_id DESC
+    """)
+
+
+    bookings = cursor.fetchall()
+
+
+    connection.close()
+
+
+
+    # Summary numbers
+
+    total_bookings = len(bookings)
+
+    pending_bookings = 0
+
+    completed_bookings = 0
+
+
+
+    for booking in bookings:
+
+        status = booking[5].strip().lower()
+
+
+        if status == "pending" or status == "confirmed":
+            pending_bookings += 1
+
+
+        if status == "completed":
+            completed_bookings += 1
+
+
+
+    latest_booking = "None"
+
+
+    if bookings:
+
+        latest_booking = bookings[0][1]
+
+
+
+    return render_template(
+        "booking_status.html",
+        bookings=bookings,
+        total_bookings=total_bookings,
+        pending_bookings=pending_bookings,
+        completed_bookings=completed_bookings,
+        latest_booking=latest_booking
+    )
+
+
     connection = sqlite3.connect("Kajana.db")
 
     cursor = connection.cursor()
@@ -190,7 +308,7 @@ def booking_status():
         completed_bookings=completed_bookings,
         latest_booking=latest_booking
     )
-    
+
 
     # Connect to database
     connection = sqlite3.connect("Kajana.db")

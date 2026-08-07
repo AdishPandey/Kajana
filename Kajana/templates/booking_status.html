@@ -21,12 +21,11 @@
     </div>
 
 
-    <a href="/dashboard" class="back_button">
+    <a href="{{ url_for('dashboard') }}" class="back_button">
         ← Dashboard
     </a>
 
 </header>
-
 
 
 
@@ -44,52 +43,24 @@
 
 
 
-<!-- SUMMARY CARDS -->
-
 <div class="summary_cards">
 
-
     <div class="summary_card">
-
-        <h3>
-            Total Bookings
-        </h3>
-
-        <p>
-            {{ total_bookings }}
-        </p>
-
+        <h3>Total Bookings</h3>
+        <p>{{ total_bookings }}</p>
     </div>
 
 
-
     <div class="summary_card">
-
-        <h3>
-            Pending
-        </h3>
-
-        <p>
-            {{ pending_bookings }}
-        </p>
-
+        <h3>Pending</h3>
+        <p>{{ pending_bookings }}</p>
     </div>
 
 
-
     <div class="summary_card">
-
-        <h3>
-            Completed
-        </h3>
-
-        <p>
-            {{ completed_bookings }}
-        </p>
-
+        <h3>Completed</h3>
+        <p>{{ completed_bookings }}</p>
     </div>
-
-
 
 </div>
 
@@ -106,124 +77,52 @@
 <div class="booking_container">
 
 
-
 {% for booking in bookings %}
-
 
 
 <div class="booking_card">
 
 
-
-    <div class="booking_top">
-
-
-        <h3>
-            #BK-{{ booking[0] }}
-        </h3>
+<div class="booking_top">
 
 
-        <span class="status">
-
-            {{ booking[5] }}
-
-        </span>
-
-
-    </div>
+<h3>
+    #BK-{{ booking[0] }}
+</h3>
 
 
 
+<!-- STATUS -->
 
-    <h2>
-        {{ booking[1] }}
-    </h2>
+{% if booking[6] == "Completed" %}
 
-
-
-    <p>
-        📅 {{ booking[2] }}
-    </p>
+<span class="status completed">
+    Completed
+</span>
 
 
-    <p>
-        🕒 {{ booking[3] }}
-    </p>
+{% elif booking[6] == "Pending" %}
+
+<span class="status pending">
+    Pending
+</span>
 
 
-    <p>
-        📝 {{ booking[4] }}
-    </p>
+{% elif booking[6] == "Confirmed" %}
+
+<span class="status confirmed">
+    Confirmed
+</span>
 
 
+{% elif booking[6] == "Cancelled" %}
+
+<span class="status cancelled">
+    Cancelled
+</span>
 
 
-    <div class="actions">
-
-
-        <!-- Update status -->
-
-        <form action="/update_status/{{ booking[0] }}" method="POST">
-
-
-           <select name="status">
-
-<option value="Pending"
-{% if booking[5] == "Pending" %}selected{% endif %}>
-Pending
-</option>
-
-
-<option value="Confirmed"
-{% if booking[5] == "Confirmed" %}selected{% endif %}>
-Confirmed
-</option>
-
-
-<option value="Completed"
-{% if booking[5] == "Completed" %}selected{% endif %}>
-Completed
-</option>
-
-
-<option value="Cancelled"
-{% if booking[5] == "Cancelled" %}selected{% endif %}>
-Cancelled
-</option>
-
-</select>
-
-
-
-
-            <button>
-                Update
-            </button>
-
-
-        </form>
-
-
-
-
-        <!-- Delete -->
-
-
-        <form action="/delete_booking/{{ booking[0] }}" method="POST">
-
-
-            <button class="delete_button">
-
-                Delete
-
-            </button>
-
-
-        </form>
-
-
-
-    </div>
+{% endif %}
 
 
 
@@ -231,8 +130,101 @@ Cancelled
 
 
 
-{% endfor %}
 
+
+<h2>
+    {{ booking[2] }}
+</h2>
+
+
+
+<p>
+📅 {{ booking[3] }}
+</p>
+
+
+<p>
+🕒 {{ booking[4] }}
+</p>
+
+
+<p>
+📝 {{ booking[5] }}
+</p>
+
+
+
+
+
+<div class="actions">
+
+
+
+<form action="{{ url_for('update_status', booking_id=booking[0]) }}" method="POST">
+
+
+<select name="status">
+
+
+<option value="Pending"
+{% if booking[6] == "Pending" %}selected{% endif %}>
+Pending
+</option>
+
+
+<option value="Confirmed"
+{% if booking[6] == "Confirmed" %}selected{% endif %}>
+Confirmed
+</option>
+
+
+<option value="Completed"
+{% if booking[6] == "Completed" %}selected{% endif %}>
+Completed
+</option>
+
+
+<option value="Cancelled"
+{% if booking[6] == "Cancelled" %}selected{% endif %}>
+Cancelled
+</option>
+
+
+</select>
+
+
+
+<button type="submit">
+Update
+</button>
+
+
+</form>
+
+
+
+
+
+<form action="{{ url_for('delete_booking', booking_id=booking[0]) }}" method="POST">
+
+
+<button class="delete_button" type="submit">
+Delete
+</button>
+
+
+</form>
+
+
+
+</div>
+
+
+</div>
+
+
+
+{% endfor %}
 
 
 </div>
