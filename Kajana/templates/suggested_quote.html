@@ -1,28 +1,205 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Suggested Quote - Kajana</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='suggested_quote.css') }}">
+
 </head>
+
 
 <body>
 
-    <h1>Suggested Quote</h1>
 
-    <p>Get an estimated quote for your landscaping or civil engineering project.</p>
+<header>
 
-    <label>Describe your project:</label>
+    <div class="logo">
+        Kajana
+        <span>EST 2026.</span>
+    </div>
 
-    <br>
 
-    <textarea rows="6" cols="50"></textarea>
+    <a href="{{ url_for('dashboard') }}" class="back_button">
+        ← Dashboard
+    </a>
 
-    <br><br>
+</header>
 
-    <button>Generate Quote</button>
 
-    <br><br>
 
-    <a href="/dashboard">Back to Dashboard</a>
+<main>
+
+
+    <div class="quote_container">
+
+
+        <div class="page_title">
+
+            <h1>Suggested Quote</h1>
+
+            <p>
+                Get an estimated cost for your landscaping or civil engineering project.
+            </p>
+
+        </div>
+
+
+
+        <div class="quote_card">
+
+
+            <form action="{{ url_for('suggested_quote') }}" method="POST">
+
+
+                <label for="service">
+                    Service
+                </label>
+
+
+                <select name="service" id="service" required>
+
+                    <option value="">
+                        Select a service
+                    </option>
+
+                    <option value="Lawn Mowing">
+                        Lawn Mowing
+                    </option>
+
+                    <option value="Garden Cleanup">
+                        Garden Cleanup
+                    </option>
+
+                    <option value="Irrigation Check">
+                        Irrigation Check
+                    </option>
+
+                    <option value="Tree Trimming">
+                        Tree Trimming
+                    </option>
+
+                </select>
+
+
+
+                <label for="area">
+                    Approximate area
+                </label>
+
+
+                <div class="area_input">
+
+                    <input
+                        type="number"
+                        name="area"
+                        id="area"
+                        min="1"
+                        placeholder="e.g. 150"
+                        required
+                    >
+
+                    <span>m²</span>
+
+                </div>
+
+
+
+                <label for="details">
+                    Describe your project
+                </label>
+
+
+                <textarea
+                    name="details"
+                    id="details"
+                    rows="6"
+                    placeholder="Tell us about the job, access, difficulty, materials required, or anything else that may help..."
+                    required
+                ></textarea>
+
+
+
+                <button type="submit">
+                    Generate Suggested Quote
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+
+
+        {% if quote %}
+
+        <div class="result_card">
+
+            <div class="result_header">
+
+                <span class="check">
+                    ✓
+                </span>
+
+                <div>
+
+                    <h2>
+                        Estimated Quote
+                    </h2>
+
+                    <p>
+                        AI-generated estimate
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="quote_result">
+
+                {{ quote }}
+
+            </div>
+
+
+            <div class="notice">
+
+                <strong>Important:</strong>
+                This is only an estimate. The final price may change
+                after an inspection of the property.
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+
+        {% if error %}
+
+        <div class="error_card">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+    </div>
+
+
+</main>
+
 
 </body>
+
 </html>

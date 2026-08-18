@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+body {
+    background: #E7E3D4;
+    color: #355E3B;
+}
+
+
+/* HEADER */
+
+header {
+    height: 80px;
+    background: #355E3B;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 35px;
+
+    color: white;
+}
+
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.logo span {
+    display: block;
+    font-size: 12px;
+}
+
+
+.back_button {
+    background: #B7D3A8;
+    color: #355E3B;
+
+    text-decoration: none;
+
+    padding: 12px 25px;
+
+    border-radius: 25px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+
+.back_button:hover {
+    background: #D5E5C9;
+}
+
+
+/* MAIN */
+
+main {
+    min-height: calc(100vh - 80px);
+
+    padding: 55px 25px;
+}
+
+
+.quote_container {
+    max-width: 700px;
+    margin: auto;
+}
+
+
+/* TITLE */
+
+.page_title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+
+.page_title h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+
+.page_title p {
+    color: #637566;
+    font-size: 17px;
+}
+
+
+/* FORM CARD */
+
+.quote_card {
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    border: 2px solid #D5DDCA;
+
+    box-shadow: 0 8px 25px rgba(53, 94, 59, 0.08);
+}
+
+
+.quote_card label {
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+
+    margin-top: 20px;
+}
+
+
+.quote_card label:first-child {
+    margin-top: 0;
+}
+
+
+/* INPUTS */
+
+select,
+input,
+textarea {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #C9D4C4;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    background: #FAFAF7;
+
+    color: #355E3B;
+
+    outline: none;
+
+}
+
+
+select:focus,
+input:focus,
+textarea:focus {
+
+    border: 2px solid #5F8B67;
+
+    background: white;
+
+}
+
+
+textarea {
+    resize: vertical;
+
+    min-height: 130px;
+}
+
+
+/* AREA */
+
+.area_input {
+    position: relative;
+}
+
+
+.area_input input {
+    padding-right: 50px;
+}
+
+
+.area_input span {
+    position: absolute;
+
+    right: 15px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #637566;
+
+    font-weight: bold;
+}
+
+
+/* BUTTON */
+
+.quote_card button {
+
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #355E3B;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.quote_card button:hover {
+
+    background: #426F48;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* RESULT */
+
+.result_card {
+
+    margin-top: 30px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    border: 2px solid #B7D3A8;
+
+    box-shadow: 0 8px 25px rgba(53, 94, 59, 0.08);
+}
+
+
+.result_header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.check {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #D8F3DC;
+
+    color: #2D6A4F;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+.result_header h2 {
+    color: #355E3B;
+}
+
+
+.result_header p {
+
+    color: #637566;
+
+    margin-top: 3px;
+}
+
+
+/* AI RESPONSE */
+
+.quote_result {
+
+    background: #F2F7EF;
+
+    border-left: 5px solid #5F8B67;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    color: #2F4F35;
+
+    line-height: 1.6;
+
+    white-space: pre-line;
+}
+
+
+/* WARNING */
+
+.notice {
+
+    margin-top: 18px;
+
+    padding: 15px;
+
+    background: #FFF7D6;
+
+    color: #6B5A1E;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* ERROR */
+
+.error_card {
+
+    margin-top: 25px;
+
+    padding: 18px;
+
+    background: #F8D7DA;
+
+    color: #842029;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 20px;
+    }
+
+
+    main {
+        padding: 35px 15px;
+    }
+
+
+    .page_title h1 {
+        font-size: 32px;
+    }
+
+
+    .quote_card {
+        padding: 25px;
+    }
+
+}

@@ -1,28 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Enquiry - Kajana</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='enquiry.css') }}">
+
 </head>
+
 
 <body>
 
-    <h1>Make an Enquiry</h1>
 
-    <p>Have a question? Send us an enquiry below.</p>
+<header>
 
-    <label>Your enquiry:</label>
+    <div class="logo">
+        Kajana
+        <span>EST 2026.</span>
+    </div>
 
-    <br>
 
-    <textarea rows="6" cols="50"></textarea>
+    <a href="{{ url_for('dashboard') }}" class="back_button">
+        ← Dashboard
+    </a>
 
-    <br><br>
+</header>
 
-    <button>Submit Enquiry</button>
 
-    <br><br>
 
-    <a href="/dashboard">Back to Dashboard</a>
+<main>
+
+
+    <div class="enquiry_container">
+
+
+        <div class="page_title">
+
+            <h1>Make an Enquiry</h1>
+
+            <p>
+                Have a question about our services? Ask our AI assistant.
+            </p>
+
+        </div>
+
+
+
+        <div class="enquiry_card">
+
+
+            <form action="{{ url_for('enquiry') }}" method="POST">
+
+
+                <label for="enquiry">
+                    Your enquiry
+                </label>
+
+
+                <textarea
+                    name="enquiry"
+                    id="enquiry"
+                    rows="7"
+                    placeholder="Ask us anything about our landscaping or civil engineering services..."
+                    required
+                ></textarea>
+
+
+                <button type="submit">
+                    Ask Kajana AI
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+
+
+        {% if response %}
+
+        <div class="response_card">
+
+            <div class="response_header">
+
+                <span class="ai_icon">
+                    AI
+                </span>
+
+                <div>
+
+                    <h2>
+                        Kajana AI
+                    </h2>
+
+                    <p>
+                        Response to your enquiry
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="response_text">
+
+                {{ response }}
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+
+        {% if error %}
+
+        <div class="error_card">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+    </div>
+
+
+</main>
+
 
 </body>
+
 </html>
